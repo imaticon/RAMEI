@@ -79,7 +79,7 @@
 {/if}
 
 <div class="searchbox">
-    <form method="post" action="{$smarty.server.PHP_SELF}?action=managelist">
+    <form method="post" action="emailmanagement.php?action=managelist">
 		<div class="input-append">
         <input type="text" name="q" value="{if $q}{$q}{else}{$LANG.rcmail_searchentercriteria}{/if}" class="input-medium appendedInputButton" onfocus="if(this.value=='{$LANG.rcmail_searchentercriteria}')this.value=''" />
 		<input type="hidden" name="domainid" value="{$domainid}"/>
@@ -127,7 +127,7 @@
 				<td>
 					{if $moderatorslist.1}
 					{foreach key=num item=moderator from=$moderatorslist}
-					<form method="post" action="{$smarty.server.PHP_SELF}?action=managelist">
+					<form method="post" action="emailmanagement.php?action=managelist">
 						<input type="hidden" name="domainid" value="{$domainid}"/>
 						<input type="hidden" name="domain" value="{$domain}"/>
 						<input type="hidden" name="deletemoderator" value="true"/>
@@ -148,7 +148,7 @@
 		</tbody>
 	</table>
 	<br />
-	<form method="post" action="{$smarty.server.PHP_SELF}?action=managelist">
+	<form method="post" action="emailmanagement.php?action=managelist">
 		<input type="hidden" name="domainid" value="{$domainid}"/>
 		<input type="hidden" name="domain" value="{$domain}"/>
 		<input type="hidden" name="addmoderator" value="true"/>
@@ -188,7 +188,7 @@
 
 <div id="memfrm" style="display:{if $addsubscribersuccess || $addsubscribererror}block{else}none{/if};">
 	<br />
-	<form method="post" action="{$smarty.server.PHP_SELF}?action=managelist">
+	<form method="post" action="emailmanagement.php?action=managelist">
 		<input type="hidden" name="domainid" value="{$domainid}"/>
 		<input type="hidden" name="domain" value="{$domain}"/>
 		<input type="hidden" name="addsubscriber" value="true"/>
@@ -235,7 +235,7 @@
 <table class="table table-striped table-framed">
     <thead>
         <tr>
-			<th {if $orderby eq "subscriber"} class="headerSort{$sort}"{/if}><a href="{$smarty.server.PHP_SELF}?action=managelist{if $q}&q={$q}{/if}&listaddress={$listaddress}&orderby=subscriber&domainid={$domainid}&domain={$domain}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_listmembertitle}&nbsp;{$LANG.rcmail_singlewordof} {$listaddress}</a></th>
+			<th {if $orderby eq "subscriber"} class="headerSort{$sort}"{/if}><a href="emailmanagement.php?action=managelist{if $q}&q={$q}{/if}&listaddress={$listaddress}&orderby=subscriber&domainid={$domainid}&domain={$domain}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_listmembertitle}&nbsp;{$LANG.rcmail_singlewordof} {$listaddress}</a></th>
 			<th><a href="#" onclick="return false">{$LANG.rcmail_mailactions}</a></th>
 		    <th><input id="select-all-email" type="checkbox" /></th>
         </tr>
@@ -247,7 +247,7 @@
 				{$service.subscriber}
 			</td>
 			<td>
-				<form method="POST" action="{$smarty.server.PHP_SELF}?action=managelist" onclick="return confirmMemberDelete();">
+				<form method="post" action="emailmanagement.php?action=managelist" onclick="return confirmMemberDelete();">
 					<input type="hidden" name="deletesubscriber" value="true"/>
 					<input type="hidden" name="subscribers" value="{$service.subscriber}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
@@ -272,7 +272,7 @@
 			<td colspan="3">
 				{if $searchdataKey}
 				<div style="float:right;">
-					<form id="multiaction" method="POST" action="{$smarty.server.PHP_SELF}?action=managelist">
+					<form id="multiaction" method="post" action="emailmanagement.php?action=managelist">
 						<input type="hidden" name="domain" value="{$domain}"/>
 						<input type="hidden" name="domainid" value="{$domainid}"/>
 						<input type="hidden" name="listaddress" value="{$listaddress}"/>
@@ -285,7 +285,7 @@
 				{/if}
 				{if $q neq ""}
 				<div style="float:left;">
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=managelist">
+				<form method="post" action="emailmanagement.php?action=managelist">
 					<input type="hidden" name="q" value=""/> 
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -314,7 +314,7 @@
 </script>
 
 <div class="recordslimit">
-	<form action="{$smarty.server.PHP_SELF}">
+	<form action="emailmanagement.php">
 		<input type="hidden" name="action" value="managelist" />
 		<select name="itemlimit" id="itemlimit" onchange="this.form.submit();">
 			<option>{$LANG.resultsperpage}</option>
@@ -332,14 +332,14 @@
 
 <div class="pagination">
     <ul>
-        <li class="prev{if !$prevpage} disabled{/if}"><a href="{if $prevpage}{$smarty.server.PHP_SELF}?action=managelist{if $q}&q={$q}{/if}&amp;page={$prevpage}&domainid={$domainid}&domain={$domain}&listaddress={$listaddress}&itemlimit={$itemlimit}{else}javascript:return false;{/if}">&larr; {$LANG.previouspage}</a></li>
-        <li class="next{if !$nextpage || $nextpage==$pageend} disabled{/if}"><a href="{if $nextpage != $pageend}{$smarty.server.PHP_SELF}?action=managelist{if $q}&q={$q}{/if}&amp;page={$nextpage}&domainid={$domainid}&domain={$domain}&listaddress={$listaddress}&itemlimit={$itemlimit}{else}javascript:return false;{/if}">{$LANG.nextpage} &rarr;</a></li>
+        <li class="prev{if !$prevpage} disabled{/if}"><a href="{if $prevpage}emailmanagement.php?action=managelist{if $q}&q={$q}{/if}&amp;page={$prevpage}&domainid={$domainid}&domain={$domain}&listaddress={$listaddress}&itemlimit={$itemlimit}{else}javascript:return false;{/if}">&larr; {$LANG.previouspage}</a></li>
+        <li class="next{if !$nextpage || $nextpage==$pageend} disabled{/if}"><a href="{if $nextpage != $pageend}emailmanagement.php?action=managelist{if $q}&q={$q}{/if}&amp;page={$nextpage}&domainid={$domainid}&domain={$domain}&listaddress={$listaddress}&itemlimit={$itemlimit}{else}javascript:return false;{/if}">{$LANG.nextpage} &rarr;</a></li>
     </ul>
 </div>
 
 <br  />
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=managelists">
+<form method="post" action="emailmanagement.php?action=managelists">
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
 	<p align="center"><input type="submit" value="{$LANG.clientareabacklink}" class="btn"/></p>
