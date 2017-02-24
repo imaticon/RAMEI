@@ -107,7 +107,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<form method="post" action="{$smarty.server.PHP_SELF}?action=managemailhosting">
+					<form method="post" action="emailmanagement.php?action=managemailhosting">
 						<input name="domainid" value="{$domainid}" type="hidden"/>
 						<input type="hidden" name="domain" value="{$domain}"/>
 						<input name="freemailhosting" value="{$freemailhosting}" type="hidden"/>
@@ -330,7 +330,7 @@
 			</td>
 			<td>
 				{if $iscatchallactive eq "true"}
-				<form method="POST" action="{$smarty.server.PHP_SELF}?action=managemailhosting">
+				<form method="post" action="emailmanagement.php?action=managemailhosting">
 					<input name="deactivatecatchall" value="true" type="hidden"/>
 					<input name="domainid" value="{$domainid}" type="hidden"/>
 					<input name="domain" value="{$domain}" type="hidden"/>
@@ -343,7 +343,7 @@
 					{/if}
 				</form>
 				{else}
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=catchall">
+				<form method="post" action="emailmanagement.php?action=catchall">
 					<input name="domainid" value="{$domainid}" type="hidden"/>
 					<input name="domain" value="{$domain}" type="hidden"/>
 					<input name="freemailhosting" value="{$freemailhosting}" type="hidden"/>
@@ -355,7 +355,6 @@
 				{/if}
 			</td>
 		</tr>
-		{/if}
 		<tr>
 			<td>
 				<strong>{$LANG.rcmail_totalmails}</strong>
@@ -364,13 +363,12 @@
 				{if $numproducts}<strong>{$numproducts}</strong>{else}{$LANG.rcmail_infonotavail}{/if}
 			</td>
 		</tr>
-		{if $isstargate neq "true"}
 		<tr>
 			<td>
 				<strong>{$LANG.rcmail_totalmailswithoutresponder}</strong>
 			</td>
 			<td colspan="2">
-				{if $numpopaccounts}<strong>{$numpopaccounts}</strong>&nbsp;<a href="{$smarty.server.PHP_SELF}?action=manageemails&amp;q=without_autoresponder&amp;domainid={$domainid}&amp;domain={$domain}&amp;freemailhosting={$freemailhosting}&amp;page=1">{$LANG.clientareaviewdetails}</a>{else}{$LANG.rcmail_infonotavail}{/if}
+				{if $numpopaccounts}<strong>{$numpopaccounts}</strong>&nbsp;<a href="emailmanagement.php?action=manageemails&amp;q=autoresponder&amp;domainid={$domainid}&amp;domain={$domain}&amp;freemailhosting={$freemailhosting}&amp;page=1">{$LANG.clientareaviewdetails}</a>{else}{$LANG.rcmail_infonotavail}{/if}
 			</td>
 		</tr>
 		{/if}
@@ -379,7 +377,7 @@
 				<strong>{$LANG.rcmail_totalmailsonlyfwd}</strong>
 			</td>
 			<td colspan="2">
-				{if $numfwdaccounts}<strong>{$numfwdaccounts}</strong>&nbsp;<a href="{$smarty.server.PHP_SELF}?action=manageemails&q=forward&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&amp;page=1">{$LANG.clientareaviewdetails}</a>{else}{$LANG.rcmail_infonotavail}{/if}
+				{if $numfwdaccounts}<strong>{$numfwdaccounts}</strong>&nbsp;<a href="emailmanagement.php?action=manageemails&q=forward&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&amp;page=1">{$LANG.clientareaviewdetails}</a>{else}{$LANG.rcmail_infonotavail}{/if}
 			</td>
 		</tr>
 		<tr>
@@ -387,7 +385,7 @@
 				<strong>{$LANG.rcmail_totalmailssuspended}</strong>
 			</td>
 			<td colspan="2">
-				{if $numsuspendedaccounts}<strong>{$numsuspendedaccounts}</strong>&nbsp;<a href="{$smarty.server.PHP_SELF}?action=manageemails&q=suspend&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&amp;page=1">{$LANG.clientareaviewdetails}</a>{else}{$LANG.rcmail_infonotavail}{/if}
+				{if $numsuspendedaccounts}<strong>{$numsuspendedaccounts}</strong>&nbsp;<a href="emailmanagement.php?action=manageemails&q=suspend&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&amp;page=1">{$LANG.clientareaviewdetails}</a>{else}{$LANG.rcmail_infonotavail}{/if}
 			</td>
 		</tr>
 		{if $freemailhosting eq "false"}
@@ -408,7 +406,7 @@
 		<tr>
 			{if $isstargate neq "true"}
 			<th class="textcenter">
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=createaccount">
+				<form method="post" action="emailmanagement.php?action=createaccount">
 					<input type="hidden" name="page" value="1"/>
 					<input name="domainid" value="{$domainid}" type="hidden"/>
 					<input name="domain" value="{$domain}" type="hidden"/>
@@ -418,7 +416,7 @@
 			</th>
 			{/if}
 			<th class="textcenter">
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=createmailfwd">
+				<form method="post" action="emailmanagement.php?action=createmailfwd">
 					<input type="hidden" name="page" value="1"/>
 					<input name="domainid" value="{$domainid}" type="hidden"/>
 					<input name="domain" value="{$domain}" type="hidden"/>
@@ -427,7 +425,7 @@
 				</form>
 			</th>
 			<th class="textcenter">
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=manageemails">
+				<form method="post" action="emailmanagement.php?action=manageemails">
 					<input type="hidden" name="page" value="1"/>
 					<input name="domainid" value="{$domainid}" type="hidden"/>
 					<input name="domain" value="{$domain}" type="hidden"/>
@@ -437,7 +435,7 @@
 			</th>
 			{if $freemailhosting eq "false"}
 			<th class="textcenter">
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=createmaillist">
+				<form method="post" action="emailmanagement.php?action=createmaillist">
 					<input type="hidden" name="page" value="1"/>
 					<input name="domainid" value="{$domainid}" type="hidden"/>
 					<input name="domain" value="{$domain}" type="hidden"/>
@@ -445,7 +443,7 @@
 				</form>
 			</th>
 			<th class="textcenter">
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=managelists">
+				<form method="post" action="emailmanagement.php?action=managelists">
 					<input type="hidden" name="page" value="1"/>
 					<input name="domainid" value="{$domainid}" type="hidden"/>
 					<input name="domain" value="{$domain}" type="hidden"/>
