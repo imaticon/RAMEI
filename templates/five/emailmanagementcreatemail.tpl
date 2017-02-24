@@ -69,7 +69,7 @@
 		</tr>
 		<tr>
 			<td>
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=managemailhosting">
+				<form method="post" action="emailmanagement.php?action=managemailhosting">
 					<input type="hidden" name="page" value="{$smarty.post.page}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -78,7 +78,7 @@
 				</form>
 			</td>
 			<td>
-				<form method="POST" action="{$smarty.server.PHP_SELF}?action=modifyaccount">
+				<form method="post" action="emailmanagement.php?action=modifyaccount">
 					<input type="hidden" name="page" value="{$smarty.post.page}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -105,7 +105,7 @@
 
 <br />
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=createaccount">
+<form method="post" action="emailmanagement.php?action=createaccount">
 	<input type="hidden" name="page" value="{$smarty.post.page}"/>
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
@@ -267,7 +267,7 @@
 	<br />
 	<li>
 		<strong>{$LANG.rcmail_bulkcsvupload}</strong>
-		<form method="post" enctype="multipart/form-data" action="{$smarty.server.PHP_SELF}?action=createaccount#bulk">
+		<form method="post" enctype="multipart/form-data" action="emailmanagement.php?action=createaccount#bulk">
 		<input type="hidden" name="bulkcreate" value="true" />
 		<input type="hidden" name="page" value="{$smarty.post.page}"/>
 		<input type="hidden" name="domainid" value="{$domainid}"/>
@@ -288,7 +288,7 @@
     </ul>
 </div>
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=createaccount">
+<form method="post" action="emailmanagement.php?action=createaccount">
 	<input type="hidden" name="download" value="true"/>
 	<input type="hidden" name="page" value="{$smarty.post.page}"/>
 	<input type="hidden" name="domainid" value="{$domainid}"/>
@@ -331,7 +331,7 @@
 {/if}
 {/if}
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=managemailhosting">
+<form method="post" action="emailmanagement.php?action=managemailhosting">
 	<input type="hidden" name="page" value="{$smarty.post.page}"/>
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
