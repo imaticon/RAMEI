@@ -46,7 +46,7 @@
 {/if}
 
 <div class="searchbox">
-    <form method="post" action="{$smarty.server.PHP_SELF}?action=manageemails">
+    <form method="post" action="emailmanagement.php?action=manageemails">
 		<div class="input-append">
         <input type="text" name="q" value="{if $q}{$q}{else}{$LANG.rcmail_searchentercriteria}{/if}" class="input-medium appendedInputButton" onfocus="if(this.value=='{$LANG.rcmail_searchentercriteria}')this.value=''" />
 		<input type="hidden" name="page" value="{$pagenumber}"/>
@@ -77,10 +77,10 @@
 <table class="table table-striped table-framed">
     <thead>
         <tr>
-			<th {if $orderby eq "emailAddress"} class="headerSort{$sort}"{/if}><a href="{$smarty.server.PHP_SELF}?action=manageemails{if $q}&q={$q}{/if}&orderby=emailAddress&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_mailaccounttitle}</a></th>
-			<th {if $orderby eq "accountType"} class="headerSort{$sort}"{/if}><a href="{$smarty.server.PHP_SELF}?action=manageemails{if $q}&q={$q}{/if}&orderby=accountType&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_mailaccounttypetitle}</a></th>
-			<th {if $orderby eq "status"} class="headerSort{$sort}"{/if}><a href="{$smarty.server.PHP_SELF}?action=manageemails{if $q}&q={$q}{/if}&orderby=status&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_mailaccountstatus}</a></th>
-			<th {if $orderby eq "quotaUsed"} class="headerSort{$sort}"{/if}><a href="{$smarty.server.PHP_SELF}?action=manageemails{if $q}&q={$q}{/if}&orderby=quotaUsed&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_mailaccountcuota}</a></th>
+			<th {if $orderby eq "emailAddress"} class="headerSort{$sort}"{/if}><a href="emailmanagement.php?action=manageemails{if $q}&q={$q}{/if}&orderby=emailAddress&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_mailaccounttitle}</a></th>
+			<th {if $orderby eq "accountType"} class="headerSort{$sort}"{/if}><a href="emailmanagement.php?action=manageemails{if $q}&q={$q}{/if}&orderby=accountType&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_mailaccounttypetitle}</a></th>
+			<th {if $orderby eq "status"} class="headerSort{$sort}"{/if}><a href="emailmanagement.php?action=manageemails{if $q}&q={$q}{/if}&orderby=status&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_mailaccountstatus}</a></th>
+			<th {if $orderby eq "quotaUsed"} class="headerSort{$sort}"{/if}><a href="emailmanagement.php?action=manageemails{if $q}&q={$q}{/if}&orderby=quotaUsed&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&sort={if $sort eq "desc"}asc{else}desc{/if}&page={$pagenumber}&itemlimit={$itemlimit}">{$LANG.rcmail_mailaccountcuota}</a></th>
 			<th colspan="3"><a href="#" onclick="return false">{$LANG.rcmail_mailactions}</a></th>
 			<th><input id="select-all-email" type="checkbox" /></th>
 		</tr>
@@ -105,7 +105,7 @@
 				{$service.quotaUsed} Kb / {$service.percentageQuotaUsage}%			
 			</td>
 			<td>
-				<form method="POST" action="{$smarty.server.PHP_SELF}?action=modifyaccount">
+				<form method="post" action="emailmanagement.php?action=modifyaccount">
 					<input type="hidden" name="page" value="{$pagenumber}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -116,7 +116,7 @@
 				</form>
 			</td>
 			<td>
-				<form method="POST" action="{$smarty.server.PHP_SELF}?action=manageemails" onclick="return confirmDelete();">
+				<form method="post" action="emailmanagement.php?action=manageemails" onclick="return confirmDelete();">
 					<input type="hidden" name="delete" value="true"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -129,7 +129,7 @@
 				</form>
 			</td>
 			<td>
-				<form method="POST" action="{$smarty.server.PHP_SELF}?action=manageemails" {if $service.status eq "ACTIVE"}onclick="return confirmSuspend();{/if}">
+				<form method="post" action="emailmanagement.php?action=manageemails" {if $service.status eq "ACTIVE"}onclick="return confirmSuspend();{/if}">
 					<input type="hidden" name="{if $service.status eq "ACTIVE"}suspend{else}unsuspend{/if}" value="true"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -154,7 +154,7 @@
 			<td colspan="8">
 				{if $searchdataKey}
 				<div style="float:right;">
-					<form id="multiaction" method="POST" action="{$smarty.server.PHP_SELF}?action=manageemails">
+					<form id="multiaction" method="post" action="emailmanagement.php?action=manageemails">
 						<input type="hidden" name="domain" value="{$domain}"/>
 						<input type="hidden" name="domainid" value="{$domainid}"/>
 						<input name="freemailhosting" value="{$freemailhosting}" type="hidden"/>
@@ -168,7 +168,7 @@
 				{/if}
 				{if $q neq ""}
 				<div style="float:left;">
-					<form method="post" action="{$smarty.server.PHP_SELF}?action=manageemails">
+					<form method="post" action="emailmanagement.php?action=manageemails">
 						<input type="hidden" name="page" value="{$pagenumber}"/>
 						<input type="hidden" name="q" value=""/> 
 						<input type="hidden" name="domainid" value="{$domainid}"/>
@@ -198,7 +198,7 @@
 </script>
 
 <div class="recordslimit">
-	<form action="{$smarty.server.PHP_SELF}">
+	<form action="emailmanagement.php">
 		<input type="hidden" name="action" value="manageemails" />
 		<input type="hidden" name="page" value="{$pagenumber}"/>
 		<select name="itemlimit" id="itemlimit" onchange="this.form.submit();">
@@ -217,14 +217,14 @@
 
 <div class="pagination">
     <ul>
-		<li class="prev{if !$prevpage} disabled{/if}"><a href="{if $prevpage}{$smarty.server.PHP_SELF}?action=manageemails{if $q}&q={$q}{/if}&amp;page={$prevpage}&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&itemlimit={$itemlimit}{else}javascript:return false;{/if}">&larr; {$LANG.previouspage}</a></li>
-        <li class="next{if !$nextpage || $nextpage==$pageend} disabled{/if}"><a href="{if $nextpage != $pageend}{$smarty.server.PHP_SELF}?action=manageemails{if $q}&q={$q}{/if}&amp;page={$nextpage}&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&itemlimit={$itemlimit}{else}javascript:return false;{/if}">{$LANG.nextpage} &rarr;</a></li>
+		<li class="prev{if !$prevpage} disabled{/if}"><a href="{if $prevpage}emailmanagement.php?action=manageemails{if $q}&q={$q}{/if}&amp;page={$prevpage}&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&itemlimit={$itemlimit}{else}javascript:return false;{/if}">&larr; {$LANG.previouspage}</a></li>
+        <li class="next{if !$nextpage || $nextpage==$pageend} disabled{/if}"><a href="{if $nextpage != $pageend}emailmanagement.php?action=manageemails{if $q}&q={$q}{/if}&amp;page={$nextpage}&domainid={$domainid}&domain={$domain}&freemailhosting={$freemailhosting}&itemlimit={$itemlimit}{else}javascript:return false;{/if}">{$LANG.nextpage} &rarr;</a></li>
     </ul>
 </div>
 
 <br />
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=managemailhosting">
+<form method="post" action="emailmanagement.php?action=managemailhosting">
 	<input type="hidden" name="page" value="{$pagenumber}"/>
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
