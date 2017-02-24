@@ -43,7 +43,7 @@
 </div>
 {/if}
 
-<form method="post" name="cfg" action="{$smarty.server.PHP_SELF}?action=configmailinglist">
+<form method="post" name="cfg" action="emailmanagement.php?action=configmailinglist">
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
 	<input type="hidden" name="configlist" value="true"/>
