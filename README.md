@@ -1,5 +1,6 @@
 # RAMEI
-Resellerclub Advanced Management Email Interface for WHMCS 
+Resellerclub Advanced Management Email Interface for WHMCS
+Product Overview and Description: [RAMEI](http://www.resellerclub-mods.com/en/products/management-mods/ramei.html)
 
 ## WHMCS Six and Five Client Area Template files
 * emailmanagementaccounts.tpl
