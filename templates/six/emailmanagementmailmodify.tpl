@@ -1,3 +1,12 @@
+<script>
+	jQuery(document).ready(function(){
+		jQuery("div a").click(function() {
+			jQuery(this).parent().children().removeClass("active");
+			jQuery(this).addClass("active");
+		});
+	});
+</script>
+
 <script language="javascript" type="text/javascript">
 	function confirmFwdDelete(){literal}{{/literal}return confirm("{$LANG.rcmail_deleteforwardwarning}");{literal}}{/literal}
 </script>
@@ -62,7 +71,7 @@
 			{$LANG.rcmail_mailssendto}: <span class="label label-warning">{$emailaddress}</span>&nbsp;{$LANG.rcmail_forwardingto}: <span class="label label-success">{$forwarder}</span><br />
 		</td>
 		<td>
-			<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount">
+			<form method="post" action="emailmanagement.php?action=modifyaccount">
 				<input type="hidden" name="page" value="{$smarty.post.page}"/>
 				<input type="hidden" name="domainid" value="{$domainid}"/>
 				<input type="hidden" name="domain" value="{$domain}"/>
@@ -80,7 +89,7 @@
 </table>
 
 <br  />
-<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount">
+<form method="post" action="emailmanagement.php?action=modifyaccount">
 	<input type="hidden" name="page" value="{$smarty.post.page}"/>
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
@@ -140,7 +149,7 @@
 			</ul>
 		</div>
 		{/if}			
-		<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount#tabModify">
+		<form method="post" action="emailmanagement.php?action=modifyaccount#tabModify">
 			<input type="hidden" name="page" value="{$smarty.post.page}"/>
 			<input type="hidden" name="domainid" value="{$domainid}"/>
 			<input type="hidden" name="domain" value="{$domain}"/>
@@ -212,7 +221,7 @@
 		</div>
 		{/if}
 
-		<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount#tabChangepwd">
+		<form method="post" action="emailmanagement.php?action=modifyaccount#tabChangepwd">
 			<input type="hidden" name="page" value="{$smarty.post.page}"/>
 			<input type="hidden" name="domainid" value="{$domainid}"/>
 			<input type="hidden" name="domain" value="{$domain}"/>
@@ -277,7 +286,7 @@
 		</div>
 		{/if}
 		
-		<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount#tabResetpwd">
+		<form method="post" action="emailmanagement.php?action=modifyaccount#tabResetpwd">
 			<input type="hidden" name="page" value="{$smarty.post.page}"/>
 			<input type="hidden" name="domainid" value="{$domainid}"/>
 			<input type="hidden" name="domain" value="{$domain}"/>

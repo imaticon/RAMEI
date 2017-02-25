@@ -35,7 +35,7 @@
 
 {else}
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=catchall">
+<form method="post" action="emailmanagement.php?action=catchall">
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
 	<input name="freemailhosting" value="{$freemailhosting}" type="hidden"/>
@@ -68,7 +68,7 @@
 
 <br />
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=managemailhosting">
+<form method="post" action="emailmanagement.php?action=managemailhosting">
 <input type="hidden" name="domainid" value="{$domainid}"/>
 <input type="hidden" name="domain" value="{$domain}"/>
 <input name="freemailhosting" value="{$freemailhosting}" type="hidden"/>

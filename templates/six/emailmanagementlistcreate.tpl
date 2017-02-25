@@ -105,7 +105,7 @@
 	<tr>
 		<td>&nbsp;</td>
 		<td>
-			<form method="POST" action="{$smarty.server.PHP_SELF}?action=configmailinglist">
+			<form method="post" action="emailmanagement.php?action=configmailinglist">
 				<input type="hidden" name="domainid" value="{$domainid}"/>
 				<input type="hidden" name="domain" value="{$domain}"/>
 				<input type="hidden" name="listaddress" value="{$xmlmailinglist.mailingList.listname}@{$xmlmailinglist.mailingList.domainname}"/>
@@ -113,7 +113,7 @@
 			</form>
 		</td>
 	    <td>
-			<form method="POST" action="{$smarty.server.PHP_SELF}?action=managelist">
+			<form method="post" action="emailmanagement.php?action=managelist">
 				<input type="hidden" name="domainid" value="{$domainid}"/>
 				<input type="hidden" name="domain" value="{$domain}"/>
 				<input type="hidden" name="listaddress" value="{$xmlmailinglist.mailingList.listname}@{$xmlmailinglist.mailingList.domainname}"/>
@@ -135,7 +135,7 @@
 </div>
 {/if}
 
-<form method="post" name="cfg" action="{$smarty.server.PHP_SELF}?action=createmaillist">
+<form method="post" name="cfg" action="emailmanagement.php?action=createmaillist">
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
 	<input type="hidden" name="createlist" value="true"/>

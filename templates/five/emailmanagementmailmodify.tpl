@@ -72,7 +72,7 @@
 								{$LANG.rcmail_mailssendto}: <span class="label expired">{$emailaddress}</span>&nbsp;{$LANG.rcmail_forwardingto}: <span class="label active">{$forwarder}</span><br />
 							</td>
 							<td style="border:none;">
-								<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount">
+								<form method="post" action="emailmanagement.php?action=modifyaccount">
 									<input type="hidden" name="page" value="{$smarty.post.page}"/>
 									<input type="hidden" name="domainid" value="{$domainid}"/>
 									<input type="hidden" name="domain" value="{$domain}"/>
@@ -95,7 +95,7 @@
 
 <br  />
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount">
+<form method="post" action="emailmanagement.php?action=modifyaccount">
 	<input type="hidden" name="page" value="{$smarty.post.page}"/>
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
@@ -139,7 +139,7 @@
 
 <br />
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=manageemails">
+<form method="post" action="emailmanagement.php?action=manageemails">
 	<input type="hidden" name="page" value="{$smarty.post.page}"/>
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
@@ -167,7 +167,7 @@
         <div class="col30">
             <div class="internalpadding">
                 <div class="styled_title"><h2>{$LANG.rcmail_modifypersonaldata}</h2></div>
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=manageemails">
+				<form method="post" action="emailmanagement.php?action=manageemails">
 					<input type="hidden" name="page" value="{$smarty.post.page}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -197,7 +197,7 @@
 					</ul>
 				</div>
 				{/if}			
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount#tab1">
+				<form method="post" action="emailmanagement.php?action=modifyaccount#tab1">
 					<input type="hidden" name="page" value="{$smarty.post.page}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -264,7 +264,7 @@
         <div class="col30">
             <div class="internalpadding">
                 <div class="styled_title"><h2>{$LANG.rcmail_changepasswdtitle}</h2></div>
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=manageemails">
+				<form method="post" action="emailmanagement.php?action=manageemails">
 					<input type="hidden" name="page" value="{$smarty.post.page}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -295,7 +295,7 @@
 				</div>
 				{/if}
 				
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount#tab2">
+				<form method="post" action="emailmanagement.php?action=modifyaccount#tab2">
 					<input type="hidden" name="page" value="{$smarty.post.page}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -348,7 +348,7 @@
         <div class="col30">
             <div class="internalpadding">
                 <div class="styled_title"><h2>{$LANG.rcmail_resetmailpasswdtitle}</h2></div>
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=manageemails">
+				<form method="post" action="emailmanagement.php?action=manageemails">
 					<input type="hidden" name="page" value="{$smarty.post.page}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>
@@ -379,7 +379,7 @@
 				</div>
 				{/if}
 				
-				<form method="post" action="{$smarty.server.PHP_SELF}?action=modifyaccount#tab3">
+				<form method="post" action="emailmanagement.php?action=modifyaccount#tab3">
 					<input type="hidden" name="page" value="{$smarty.post.page}"/>
 					<input type="hidden" name="domainid" value="{$domainid}"/>
 					<input type="hidden" name="domain" value="{$domain}"/>

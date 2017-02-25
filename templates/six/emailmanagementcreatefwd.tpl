@@ -20,7 +20,7 @@
 </div>
 {/if}
 
-<form method="post" action="{$smarty.server.PHP_SELF}?action=createmailfwd">
+<form method="post" action="emailmanagement.php?action=createmailfwd">
 	<input type="hidden" name="page" value="{$smarty.post.page}"/>
 	<input type="hidden" name="domainid" value="{$domainid}"/>
 	<input type="hidden" name="domain" value="{$domain}"/>
