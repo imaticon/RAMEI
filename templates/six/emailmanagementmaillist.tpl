@@ -99,10 +99,11 @@
 			<input type="hidden" name="domain" value="{$domain}"/>
 			<input type="hidden" name="addsubscriber" value="true"/>
 			<input type="hidden" name="listaddress" value="{$listaddress}"/>
+			<input type="hidden" name="istab" value="tabaddmembers"/>
 			<table class="table table-bordered table-hover">
 				<tr>
 					<td colspan="2">
-						<h3>{$LANG.rcmail_addmembers}</h3>
+						<h3>{$LANG.rcmail_addmembers} {$listaddress}</h3>
 					</td>
 				</tr>
 				<tr>
@@ -138,6 +139,7 @@
 				<input type="hidden" name="domainid" value="{$domainid}"/>
 				<input type="hidden" name="domain" value="{$domain}"/>
 				<input type="hidden" name="listaddress" value="{$listaddress}"/>
+				<input type="hidden" name="istab" value="tabremmembers"/>
 				<span class="input-group-btn">
 					<input type="text" name="q" value="{if $q}{$q}{else}{$LANG.rcmail_searchentercriteria}{/if}" class="form-control input-sm" onfocus="if(this.value=='{$LANG.rcmail_searchentercriteria}')this.value=''" />
 					<button type="submit" class="btn btn-primary btn-sm">{$LANG.searchfilter}</button>
@@ -168,6 +170,7 @@
 						<input type="hidden" name="page" value="{$pagenumber}"/>
 						<input type="hidden" name="itemlimit" value="{$itemlimit}"/>
 						<input type="hidden" name="q" value="{$q}"/>
+						<input type="hidden" name="istab" value="tabremmembers"/>
 						<input type="submit" value="{$LANG.rcmail_deletebutton}" class="btn btn-danger btn-sm"/>
 					</form>
 				</td>
@@ -191,6 +194,7 @@
 							<input type="hidden" name="page" value="{$pagenumber}"/>
 							<input type="hidden" name="itemlimit" value="{$itemlimit}"/>
 							<input type="hidden" name="q" value="{$q}"/>
+							<input type="hidden" name="istab" value="tabremmembers"/>
 							<input type="submit" name="membersdelete" value="{$LANG.rcmail_multideletememberbutton}" class="btn btn-danger btn-sm" onclick="return confirmMemberDelete();" />
 						</form>
 					</div>
@@ -224,13 +228,14 @@
 				<input type="hidden" name="domainid" value="{$domainid}" />
 				<input type="hidden" name="domain" value="{$domain}" />
 				<input type="hidden" name="listaddress" value="{$listaddress}" />
+				<input type="hidden" name="istab" value="tabremmembers"/>
 			</form>
 		</div>
 		
 		<div class="pull-left">
 			<ul class="pagination" style="margin-top:0;">
-				<li class="prev{if !$prevpage} disabled{/if}"><a href="{if $prevpage}emailmanagement.php?action=managelist{if $q}&q={$q}{/if}&amp;page={$prevpage}&domainid={$domainid}&domain={$domain}&listaddress={$listaddress}&itemlimit={$itemlimit}#tabDelmem{else}javascript:return false;{/if}">&larr; {$LANG.previouspage}</a></li>
-				<li class="next{if !$nextpage || $nextpage==$pageend} disabled{/if}"><a href="{if $nextpage != $pageend}emailmanagement.php?action=managelist{if $q}&q={$q}{/if}&amp;page={$nextpage}&domainid={$domainid}&domain={$domain}&listaddress={$listaddress}&itemlimit={$itemlimit}#tabDelmem{else}javascript:return false;{/if}">{$LANG.nextpage} &rarr;</a></li>
+				<li class="prev{if !$prevpage} disabled{/if}"><a href="{if $prevpage}emailmanagement.php?action=managelist{if $q}&q={$q}{/if}&amp;page={$prevpage}&domainid={$domainid}&domain={$domain}&listaddress={$listaddress}&itemlimit={$itemlimit}&istab=tabremmembers#tabDelmem{else}javascript:return false;{/if}">&larr; {$LANG.previouspage}</a></li>
+				<li class="next{if !$nextpage || $nextpage==$pageend} disabled{/if}"><a href="{if $nextpage != $pageend}emailmanagement.php?action=managelist{if $q}&q={$q}{/if}&amp;page={$nextpage}&domainid={$domainid}&domain={$domain}&listaddress={$listaddress}&itemlimit={$itemlimit}&istab=tabremmembers#tabDelmem{else}javascript:return false;{/if}">{$LANG.nextpage} &rarr;</a></li>
 			</ul>
 		</div>		
 	</div>
@@ -239,7 +244,7 @@
 		<table class="table table-bordered table-hover">
 			<tr>
 				<td colspan="2">
-					<h3>{$LANG.rcmail_addmoderators} ({$LANG.rcmail_moderatorstitle})</h3>
+					<h3>{$LANG.rcmail_addmoderators} {$listaddress}</h3>
 				</td>
 			</tr>
 			<tr>
@@ -252,6 +257,7 @@
 						<input type="hidden" name="deletemoderator" value="true"/>
 						<input type="hidden" name="moderator" value="{$moderator}"/>
 						<input type="hidden" name="listaddress" value="{$listaddress}"/>
+						<input type="hidden" name="istab" value="tabmoderators"/>
 						<div>
 							<p>
 								<strong>{$moderator}</strong>&nbsp;&nbsp;
@@ -274,6 +280,7 @@
 			<input type="hidden" name="domain" value="{$domain}"/>
 			<input type="hidden" name="addmoderator" value="true"/>
 			<input type="hidden" name="listaddress" value="{$listaddress}"/>
+			<input type="hidden" name="istab" value="tabmoderators"/>
 			<table class="table table-bordered table-hover">
 				<tr>
 					<td width="200">
