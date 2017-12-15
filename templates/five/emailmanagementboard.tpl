@@ -451,6 +451,14 @@
 				</form>
 			</th>
 			{/if}
+			<th class="textcenter">
+				<form method="post" action="emailmanagement.php?action=managedomainaliases">
+					<input type="hidden" name="page" value="1"/>
+					<input name="domainid" value="{$domainid}" type="hidden"/>
+					<input name="domain" value="{$domain}" type="hidden"/>
+					<input type="submit" value="{$LANG.rcmail_managedomainaliases}" class="btn btn-info"/>
+				</form>
+			</th>
 		</tr>
 	</thead>
 </table>
