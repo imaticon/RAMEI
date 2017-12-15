@@ -12,6 +12,7 @@ Resellerclub Advanced Management Email Interface for WHMCS
 * emailmanagementmaillist.tpl
 * emailmanagementmaillists.tpl
 * emailmanagementmailmodify.tpl
+* emailmanagementdomaliases.tpl
 
 ## Compatibility
 This theme is compatible with WHMCS 6.x - 7.x

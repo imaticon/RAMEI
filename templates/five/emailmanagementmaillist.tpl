@@ -118,7 +118,7 @@
 		<thead>
 			<tr>
 				<th colspan="2">
-					<h3>{$LANG.rcmail_addmoderators} ({$LANG.rcmail_moderatorstitle})</h3>
+					<h3>{$LANG.rcmail_addmoderators} {$listaddress}</h3>
 				</th>
 			</tr>
 		</thead>
@@ -197,7 +197,7 @@
 			<thead>
 				<tr>
 					<th colspan="2">
-						<h3>{$LANG.rcmail_addmembers}</h3>
+						<h3>{$LANG.rcmail_addmembers} {$listaddress}</h3>
 					</th>
 				</tr>
 			</thead>
