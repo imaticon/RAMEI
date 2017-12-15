@@ -11,125 +11,138 @@
 	function confirmFwdDelete(){literal}{{/literal}return confirm("{$LANG.rcmail_deleteforwardwarning}");{literal}}{/literal}
 </script>
 
-{if $isonlyforwarder}
-
-{include file="$template/includes/alert.tpl" type="info" msg=$LANG.rcmail_modifyforwarderdesc1|cat:"&nbsp;"|cat:$emailaddress|cat:"&nbsp;"|cat:$LANG.rcmail_modifyforwarderdesc2}
-
-{if $delforwarderror}
-<br />
-<div class="alert alert-danger">
-    <p>{$LANG.clientareaerrors}</p>
-    <ul>
-        {$delforwarderror}
-    </ul>
-</div>
-{/if}
-
-{if $delforwardsuccess}
-<br />
-<div class="alert alert-success">
-	<p>{$LANG.moduleactionsuccess}</p>
-    <ul>
-        {$delforwardsuccess}
-    </ul>
-</div>
-{/if}
-
-{if $addforwarderror}
-<br />
-<div class="alert alert-danger">
-    <p>{$LANG.clientareaerrors}</p>
-    <ul>
-        {$addforwarderror}
-    </ul>
-</div>
-{/if}
-
-{if $addforwardsuccess}
-<br />
-<div class="alert alert-success">
-	<p>{$LANG.moduleactionsuccess}</p>
-    <ul>
-        {$addforwardsuccess}
-    </ul>
-</div>
-{/if}
-
-<h4>{$LANG.rcmail_forwarderactualtitle}</h4>
-
-<table class="table table-bordered table-hover">
-	{foreach key=num item=forwarder from=$adminForwards}
-	{if $singleforward}
-	<tr>
-		<td>
-			{$LANG.rcmail_mailssendto}: <span class="label label-warning">{$emailaddress}</span>&nbsp;{$LANG.rcmail_forwardingto}: <span class="label label-success">{$forwarder}</span>	
-		</td>
-	</tr>
-	{else}
-	<tr>
-		<td>
-			{$LANG.rcmail_mailssendto}: <span class="label label-warning">{$emailaddress}</span>&nbsp;{$LANG.rcmail_forwardingto}: <span class="label label-success">{$forwarder}</span><br />
-		</td>
-		<td>
-			<form method="post" action="emailmanagement.php?action=modifyaccount">
-				<input type="hidden" name="page" value="{$smarty.post.page}"/>
-				<input type="hidden" name="domainid" value="{$domainid}"/>
-				<input type="hidden" name="domain" value="{$domain}"/>
-				<input type="hidden" name="freemailhosting" value="{$freemailhosting}"/>
-				<input type="hidden" name="delforwarder" value="true"/>
-				<input type="hidden" name="mailtype" value="onlyforwarder"/>
-				<input type="hidden" name="forwarder" value="{$forwarder}"/>
-				<input type="hidden" name="emailaddress" value="{$emailaddress}"/>
-				<input type="submit" value="{$LANG.cartremove}" onclick="return confirmFwdDelete();" class="btn btn-danger btn-sm"/>
-			</form>
-		</td>
-	</tr>
-	{/if}
-	{/foreach}
-</table>
-
-<br  />
-<form method="post" action="emailmanagement.php?action=modifyaccount">
-	<input type="hidden" name="page" value="{$smarty.post.page}"/>
-	<input type="hidden" name="domainid" value="{$domainid}"/>
-	<input type="hidden" name="domain" value="{$domain}"/>
-	<input type="hidden" name="freemailhosting" value="{$freemailhosting}"/>
-	<input type="hidden" name="addforwarder" value="true"/>
-	<input type="hidden" name="mailtype" value="onlyforwarder"/>
-	<input type="hidden" name="emailaddress" value="{$emailaddress}"/>
-	<h4>{$LANG.rcmail_inputredirectto}</h4>
-	<table class="table table-bordered table-hover">
-		<tr>
-			<td width="200">
-				<strong>{$LANG.rcmail_redirectto}</strong>
-			</td>
-			<td>
-				<textarea class="form-control" name="forwardto" cols="100" rows="5">{if $addforwardererror}{$smarty.post.forwardto}{/if}</textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<strong>{$LANG.rcmail_note}:</strong>
-			</td>
-			<td>
-				{$LANG.rcmail_undeleteableforwarderdesc}
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<p align="center"><input type="submit" value="{$LANG.rcmail_addforwardbutton}" class="btn btn-success"/></p>
-			</td>
-		</tr>
-</table>
-</form>
-{/if}
-
 {if $ismailaccount}
 
 {include file="$template/includes/alert.tpl" type="info" msg=$LANG.rcmail_modifyemailaccountdesc}
 
+{else}
+
+{include file="$template/includes/alert.tpl" type="info" msg=$LANG.rcmail_modifyforwarderdesc1|cat:"&nbsp;"|cat:$emailaddress|cat:"&nbsp;"|cat:$LANG.rcmail_modifyforwarderdesc2}
+
+{/if}
+
 <div class="tab-content margin-bottom">
-    <div class="tab-pane fade in active" id="tabModify">
+    <div class="tab-pane fade in {if !$ismailaccount}active{/if}" id="tabAdminfwd">
+
+		{if $delforwarderror}
+		<br />
+		<div class="alert alert-danger">
+			<p>{$LANG.clientareaerrors}</p>
+			<ul>
+				{$delforwarderror}
+			</ul>
+		</div>
+		{/if}
+		
+		{if $delforwardsuccess}
+		<br />
+		<div class="alert alert-success">
+			<p>{$LANG.moduleactionsuccess}</p>
+			<ul>
+				{$delforwardsuccess}
+			</ul>
+		</div>
+		{/if}
+		
+		{if $addforwarderror}
+		<br />
+		<div class="alert alert-danger">
+			<p>{$LANG.clientareaerrors}</p>
+			<ul>
+				{$addforwarderror}
+			</ul>
+		</div>
+		{/if}
+		
+		{if $addforwardsuccess}
+		<br />
+		<div class="alert alert-success">
+			<p>{$LANG.moduleactionsuccess}</p>
+			<ul>
+				{$addforwardsuccess}
+			</ul>
+		</div>
+		{/if}
+		
+		{if $adminForwards}
+		<table class="table table-bordered table-hover">
+			<tr>
+				<td colspan="2">
+					<h4>{$LANG.rcmail_forwarderactualtitle}</h4>
+				</td>
+			</tr>
+			{foreach key=num item=forwarder from=$adminForwards}
+			{if !$ismailaccount && $singleforward}
+			<tr>
+				<td>
+					{$LANG.rcmail_mailssendto}: <span class="label label-warning">{$emailaddress}</span>&nbsp;{$LANG.rcmail_forwardingto}: <span class="label label-success">{$forwarder}</span>	
+				</td>
+			</tr>
+			{else}
+			<tr>
+				<td>
+					{$LANG.rcmail_mailssendto}: <span class="label label-warning">{$emailaddress}</span>&nbsp;{$LANG.rcmail_forwardingto}: <span class="label label-success">{$forwarder}</span><br />
+				</td>
+				<td>
+					<form method="post" action="emailmanagement.php?action=modifyaccount#tabAdminfwd">
+						<input type="hidden" name="page" value="{$smarty.post.page}"/>
+						<input type="hidden" name="domainid" value="{$domainid}"/>
+						<input type="hidden" name="domain" value="{$domain}"/>
+						<input type="hidden" name="freemailhosting" value="{$freemailhosting}"/>
+						<input type="hidden" name="delforwarder" value="true"/>
+						<input type="hidden" name="mailtype" value="{if !$ismailaccount}onlyforwarder{else}mailaccount{/if}"/>
+						<input type="hidden" name="forwarder" value="{$forwarder}"/>
+						<input type="hidden" name="emailaddress" value="{$emailaddress}"/>
+						<input type="hidden" name="istab" value="tabadminfwd"/>
+						<input type="submit" value="{$LANG.cartremove}" onclick="return confirmFwdDelete();" class="btn btn-danger btn-sm"/>
+					</form>
+				</td>
+			</tr>
+			{/if}
+			{/foreach}
+		</table>
+		{/if}
+		
+		<form method="post" action="emailmanagement.php?action=modifyaccount#tabAdminfwd">
+			<input type="hidden" name="page" value="{$smarty.post.page}"/>
+			<input type="hidden" name="domainid" value="{$domainid}"/>
+			<input type="hidden" name="domain" value="{$domain}"/>
+			<input type="hidden" name="freemailhosting" value="{$freemailhosting}"/>
+			<input type="hidden" name="addforwarder" value="true"/>
+			<input type="hidden" name="mailtype" value="{if !$ismailaccount}onlyforwarder{else}mailaccount{/if}"/>
+			<input type="hidden" name="emailaddress" value="{$emailaddress}"/>
+			<input type="hidden" name="istab" value="tabadminfwd"/>
+			<h4>{$LANG.rcmail_inputredirectto}</h4>
+			<table class="table table-bordered table-hover">
+				<tr>
+					<td width="200">
+						<strong>{$LANG.rcmail_redirectto}</strong>
+					</td>
+					<td>
+						<textarea class="form-control" name="forwardto" cols="100" rows="5">{if $addforwardererror}{$smarty.post.forwardto}{/if}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>{$LANG.rcmail_note}:</strong>
+					</td>
+					<td>
+						{if !$ismailaccount}{$LANG.rcmail_undeleteableforwarderdesc}{/if}
+						{if $freemailhosting eq "false"} {$LANG.rcmail_maxrecipientsallowed} <strong>10</strong>{else}{$LANG.rcmail_maxrecipientsallowed} <strong>5</strong>{/if}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<p align="center"><input type="submit" value="{$LANG.rcmail_addforwardbutton}" class="btn btn-success"/></p>
+					</td>
+				</tr>
+		</table>
+		</form>
+
+	</div>
+
+	{if $ismailaccount}
+	<div class="tab-pane fade in active" id="tabModify">
 		{if $modifyaccounterror}
 		<br />
 		<div class="alert alert-danger">
@@ -157,6 +170,7 @@
 			<input type="hidden" name="mailtype" value="mailaccount"/>
 			<input type="hidden" name="userdetails" value="true"/>
 			<input type="hidden" name="emailaddress" value="{$emailaddress}"/>
+			<input type="hidden" name="istab" value="tabmodifydetails"/>
 			<h4>{$LANG.rcmail_modifypersonaldata}</h4>
 			<table class="table table-bordered table-hover">
 				<tr>
@@ -228,7 +242,8 @@
 			<input type="hidden" name="freemailhosting" value="{$freemailhosting}"/>
 			<input type="hidden" name="mailtype" value="mailaccount"/>
 			<input type="hidden" name="changepasswd" value="true"/>
-			<input type="hidden" name="emailaddress" value="{$emailaddress}"/>					
+			<input type="hidden" name="emailaddress" value="{$emailaddress}"/>		
+			<input type="hidden" name="istab" value="tabchangepwd"/>			
 			<h4>{$LANG.rcmail_changepasswdtitle}</h4>
 			<table class="table table-bordered table-hover">
 				{if $changepasswdsuccess}
@@ -294,6 +309,7 @@
 			<input type="hidden" name="mailtype" value="mailaccount"/>
 			<input type="hidden" name="resetpasswd" value="true"/>
 			<input type="hidden" name="emailaddress" value="{$emailaddress}"/>
+			<input type="hidden" name="istab" value="tabresetpasswd"/>
 			<h4>{$LANG.rcmail_resetmailpasswdtitle}</h4>
 			<table class="table table-bordered table-hover">
 				<tr>
@@ -314,6 +330,8 @@
 				</tr>
 			</table>
 		</form>	
+		<br />
+		<br />
 	</div>
+	{/if}
 </div>
-{/if}
